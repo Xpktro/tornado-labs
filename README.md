@@ -1,11 +1,13 @@
+## Instructions
+
 1. Create a virtualenv environment and activate it
 
-    virtualenv env
-    source env/bin/activate
+        virtualenv env
+        source env/bin/activate
 
 1. Install tornado
 
-    pip install tornado
+        pip install tornado
 
 1. Have fun!
 
