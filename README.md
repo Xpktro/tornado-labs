@@ -7,7 +7,7 @@
 
 1. Install tornado
 
-        pip install tornado
+        pip install -r REQUIREMENTS
 
 1. Have fun!
 
