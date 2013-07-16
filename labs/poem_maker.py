@@ -26,7 +26,7 @@ class PoemPageHandler(tornado.web.RequestHandler):
 if __name__ == '__main__':
     tornado.options.parse_command_line()
     app = tornado.web.Application(
-        handlers=[('/', IndexHandler), (r'/poem', PoemPageHandler)],
+        handlers=[('^/', IndexHandler), (r'^/poem', PoemPageHandler)],
         template_path=os.path.join(os.path.dirname(__file__), 'templates')
     )
     http_server = tornado.httpserver.HTTPServer(app)
