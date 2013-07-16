@@ -14,6 +14,9 @@ class IndexHandler(tornado.web.RequestHandler):
         greeting = self.get_argument('greeting', 'Hello')
         self.write(greeting + ', friendly user!')
 
+    def write_error(self, status_code, **kwargs):
+        self.write('You caused a %d error.' % status_code)
+
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
