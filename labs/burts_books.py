@@ -29,6 +29,21 @@ class BookModule(tornado.web.UIModule):
     def render(self, book):
         return self.render_string('modules/book.html', book=book)
 
+#   def embedded_javascript(self):
+#       return u'document.write(\'hi!\');'
+
+#   def embedded_css(self):
+#       return u'.book {background-color: red !important;}'
+
+#   def html_body(self):
+#       return u'<script>document.write(\'Hello!\');</script>'
+
+    def css_files(self):
+        return u'/static/css/newreleases.css'
+
+    def javascript_files(self):
+        return u'https://ajax.googleapis.com/ajax/libs/jqueryui/' \
+            u'1.8.14/jquery-ui.min.js'
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
