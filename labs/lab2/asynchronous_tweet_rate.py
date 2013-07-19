@@ -29,6 +29,7 @@ class IndexHandler(tornado.web.RequestHandler):
         seconds_diff = time.mktime(now.timetuple()) - \
             time.mktime(oldest_tweet_at.timetuple())
         tweets_per_second = float(result_count) / seconds_diff
+        # Render already calls self.finish()
         self.render('tweet-rate.html',
             query='#freebandnames', tweets_per_second=tweets_per_second)
         #self.finish()
