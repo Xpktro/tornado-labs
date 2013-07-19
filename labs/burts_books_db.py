@@ -16,6 +16,8 @@ class Application(tornado.web.Application):
         handlers = [
             (r'^/', MainHandler),
             (r'^/recommended/', RecommendedHandler),
+            (r'^/edit/([0-9Xx\-]+)/', BookEditHandler),
+            (r'^/add/', BookEditHandler),
         ]
         settings = dict(
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
@@ -56,6 +58,35 @@ class RecommendedHandler(tornado.web.RequestHandler):
             header_text='Recommended Reading',
             books=books,
         )
+
+
+class BookEditHandler(tornado.web.RequestHandler):
+    def get(self, isbn=None):
+        book = dict()
+        if isbn:
+            coll = self.application.db.books
+            book = coll.find_one({'isbn': isbn})
+        self.render('book_edit.html',
+            page_title='Burt\'s Books',
+            header_text='Edit book',
+            book=book)
+
+    def post(self, isbn=None):
+        import time
+        book_fields = ['isbn', 'title', 'subtitle', 'image', 'author',
+            'date_released', 'description']
+        coll = self.application.db.books
+        book = dict()
+        if isbn:
+            book = coll.find_one({'isbn': isbn})
+        for key in book_fields:
+            book[key] = self.get_argument(key, None)
+        if isbn:
+            coll.save(book)
+        else:
+            book['date_added'] = int(time.time())
+            coll.insert(book)
+        self.redirect('/recommended/')
 
 
 if __name__ == '__main__':
