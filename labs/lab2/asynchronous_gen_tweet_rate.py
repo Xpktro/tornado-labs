@@ -20,8 +20,9 @@ URL = 'http://pastie.org/pastes/8156731/download?key=pdk4qwzrz1fb5zqwyrwnq'
 NOW = datetime.datetime(2012, 9, 21, 22, 51, 28)
 
 class IndexHandler(tornado.web.RequestHandler):
-    @tornado.web.asynchronous
-    @tornado.gen.engine
+    #@tornado.web.asynchronous
+    #@tornado.gen.engine
+    @tornado.gen.coroutine
     def get(self):
         client = tornado.httpclient.AsyncHTTPClient()
         # q=%23freebandnames
