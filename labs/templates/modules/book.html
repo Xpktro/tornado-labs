@@ -1,4 +1,4 @@
-<div class="book">
+<div class="book" style="overflow: auto">
     <h3 class="book_title">{{ book['title'] }}</h3>
     {% if book['subtitle'] != '' %}
     <h4 class="book_subtitle">{{ book['subtitle'] }}</h4>
@@ -11,5 +11,6 @@
         <div class="book_body">
             {% raw book['description'] %}
         </div>
+        <p><a href="/edit/{{ book['isbn'] }}/">Edit</a></p>
     </div>
 </div>
