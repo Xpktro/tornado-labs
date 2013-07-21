@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Burt's Books &ndash; Book Detail</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ static_url('js/inventory_sockets.js') }}"></script>
+</head>
+<body>
+    <div>
+        <h1>Burt's Books</h1>
+        <hr />
+        <p><h2>The Definitive Guide to the Internet</h2>
+        <em>Anonymous</em>
+        </p>
+    </div>
+    <img src="{{ static_url('images/internet.jpg') }}" alt="The Definitive Guide to the Internet" />
+    <hr />
+    <input id="session" type="hidden" value="{{ session }}" />
+    <div id="add-to-cart">
+        <p><span style="color: red;">Only <span id="count">{{ count }}</span></span> left in stock! Order now!</p>
+        <p>$20.00 <input id="add-button" type="submit" value="Add to Cart" /></p>
+    </div>
+    <div id="remove-from-cart" style="display: none;">
+        <p><span style="color: green;">One copy is in your cart.</span></p>
+        <p><input id="remove-button" type="submit" value="Remove from Cart" /></p>
+    </div>
+</body>
+</html>
